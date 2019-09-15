@@ -12,6 +12,7 @@ Minimal core.async inspector library for Clojure(Script).
 (:require [asynctor.core :as tr])
 ```
 
+### inspect
 ```clojure
   (let [c (chan 10)]
     (dotimes [x 10]
@@ -21,6 +22,7 @@ Minimal core.async inspector library for Clojure(Script).
     ;;=> {:buffer [0 1 2 3 4 5 6 7 8 9], :puts [], :takes []}
 ```
 
+### buffer (current items in the channel)
 ```clojure
   (let [c (chan 10)]
     (dotimes [x 10]
@@ -30,6 +32,7 @@ Minimal core.async inspector library for Clojure(Script).
     ;;=> [0 1 2 3 4 5 6 7 8 9]
 ```
 
+### puts (waiting puts)
 ```clojure
   (let [c (chan)]
     (dotimes [x 10]
@@ -39,6 +42,7 @@ Minimal core.async inspector library for Clojure(Script).
     ;;=> [0 1 2 3 4 5 6 7 8 9]
 ```
 
+### takes (waiting takes)
 ```clojure
   (let [c (chan)]
     (dotimes [x 10]
