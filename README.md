@@ -2,6 +2,10 @@
 
 Minimal core.async inspector library for Clojure(Script).
 
+## Install
+
+[![Asynctor](https://img.shields.io/clojars/v/asynctor.svg)](https://clojars.org/asynctor)
+
 ## Usage
 
 ```clojure
