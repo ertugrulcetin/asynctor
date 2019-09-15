@@ -9,14 +9,14 @@
             :puts (mapv second (.puts ch))
             :takes (vec (.takes ch))}
      :cljs {:buffer (or (some-> ch .-buf .-buf .-arr (js->clj :keywordize-keys true)) [])
-            :puts   (loop [r []]
-                      (if-some [v (.pop (.-puts ch))]
-                        (recur (conj r (.-val v)))
-                        r))
-            :takes  (loop [r []]
-                      (if-some [v (.pop (.-takes ch))]
-                        (recur (conj r v))
-                        r))}))
+            :puts   (reduce (fn [acc p]
+                              (if p
+                                (conj acc (.-val p))
+                                acc)) [] (js->clj (.-arr (.-puts ch)) :keywordize-keys true))
+            :takes  (reduce (fn [acc t]
+                              (if t
+                                (conj acc t)
+                                acc)) [] (js->clj (.-arr (.-takes ch)) :keywordize-keys true))}))
 
 
 (defn buffer
