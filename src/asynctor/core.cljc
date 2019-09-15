@@ -6,17 +6,17 @@
 (defn inspect
   [ch]
   #?(:clj  {:buffer (or (some-> ch .buf .buf seq reverse vec) [])
-            :puts (mapv second (.puts ch))
-            :takes (vec (.takes ch))}
-     :cljs {:buffer (or (some-> ch .-buf .-buf .-arr (js->clj :keywordize-keys true)) [])
+            :puts   (mapv second (.puts ch))
+            :takes  (vec (.takes ch))}
+     :cljs {:buffer (or (some-> ch .-buf .-buf .-arr js->clj) [])
             :puts   (reduce (fn [acc p]
                               (if p
                                 (conj acc (.-val p))
-                                acc)) [] (js->clj (.-arr (.-puts ch)) :keywordize-keys true))
+                                acc)) [] (js->clj (.-arr (.-puts ch))))
             :takes  (reduce (fn [acc t]
                               (if t
                                 (conj acc t)
-                                acc)) [] (js->clj (.-arr (.-takes ch)) :keywordize-keys true))}))
+                                acc)) [] (js->clj (.-arr (.-takes ch))))}))
 
 
 (defn buffer
@@ -48,5 +48,5 @@
 
   (let [c (async/chan)]
     (dotimes [x 10]
-      (async/take! c (fn [] )))
+      (async/take! c (fn [])))
     (takes c)))
