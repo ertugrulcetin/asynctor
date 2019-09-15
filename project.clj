@@ -1,4 +1,4 @@
-(defproject asynctor "0.1.0"
+(defproject asynctor "0.1.1"
   :description "Minimal core.async inspector library for Clojure(Script)."
   :url "https://github.com/ertugrulcetin/asynctor"
   :license {:name "Apache License" :url "http://www.apache.org/licenses/LICENSE-2.0"}

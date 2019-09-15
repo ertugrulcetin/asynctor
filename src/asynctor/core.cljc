@@ -14,7 +14,7 @@
                         (recur (conj r (.-val v)))
                         r))
             :takes  (loop [r []]
-                      (if-some [v (.pop (.-takes c))]
+                      (if-some [v (.pop (.-takes ch))]
                         (recur (conj r v))
                         r))}))
 
