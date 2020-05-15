@@ -1,6 +1,6 @@
 # asynctor
 
-Minimal core.async inspector library for Clojure(Script).
+Minimal core.async inspector library for Clojure and ClojureScript.
 
 ## Install
 
